@@ -1,0 +1,115 @@
+---
+title: "R Notebook"
+output: html_notebook
+
+---
+
+```{r}
+
+library(tidyverse)
+library(DataExplorer)
+library(Hmisc)
+
+base <- read_rds("datos_ejemplo.rds")
+
+
+```
+
+
+
+## Categorias
+
+```{r}
+
+base %>% 
+  ggplot(aes(x = pagaduria)) +
+  geom_bar()  +
+  coord_flip()
+
+```
+
+# Histograma
+
+```{r}
+
+base %>% 
+  ggplot(aes(x = freq)) +
+  geom_histogram()
+
+```
+
+
+
+```{r}
+
+
+base %>% 
+  drop_na() %>% 
+  select(freq, tomo_credito) %>% 
+  mutate(freq_cat = cut(freq, breaks = c(-Inf,0.5,1,1.25,1.5,2,Inf), include.lowest = T)) %>% 
+  group_by(freq_cat) %>% 
+  summarise(n = n(), promedio = mean(tomo_credito)) %>% 
+  
+  ggplot(aes(x  = freq_cat, y = promedio)) +
+  geom_point() +
+  geom_line(aes(group = 1))
+  
+
+```
+
+
+
+```{r}
+
+
+base %>% 
+  drop_na() %>% 
+  select(freq, tomo_credito) %>% 
+  mutate(freq_cat = cut(freq, breaks = c(-Inf,0.5,1,1.25,1.5,2,Inf), include.lowest = T)) %>% 
+  ggplot(aes(x = freq_cat, y = tomo_credito)) +
+  stat_summary(fun.data = mean_cl_normal) +
+  coord_flip()
+
+
+
+```
+
+
+
+```{r}
+
+base %>% 
+  plot_missing()
+
+
+```
+
+
+```{r}
+
+base %>% 
+  drop_na() %>% 
+  select_if(is.numeric) %>% 
+  DataExplorer::plot_correlation()
+
+
+```
+
+
+```{r}
+
+base %>% 
+  plot_histogram()
+
+```
+
+
+
+```{r}
+
+base %>% 
+  mutate(freq_cat = cut(freq, breaks = c(-Inf,0.5,1,1.25,1.5,2,Inf), include.lowest = T)) %>% 
+  plot_bar()
+
+```
+

@@ -1,7 +1,9 @@
 #Plot Multivariante
 library(ggplot2)
-install.packages("GGally")
 library(GGally)
+library(ggradar)
+
+
 bike <- read.csv("../data/tema7/daily-bike-rentals.csv")
 head(bike)
 
@@ -40,12 +42,30 @@ auto$cylinders <- factor(auto$cylinders,
 #postscript(file="multivariant.ps")
 #pdf(file="multivariant.pdf")
 png(file="multivariant.png", width = 3000, height = 3000, res = 72)
+
+plot_coches_mvar <- 
 ggpairs(auto[,2:7], 
         aes(colour = cylinders, 
             alpha = 0.4),
         title = "Análisis multivariante de coches",
         upper = list(continuous = "density"),
         lower = list(combo = "denstrip"))+
-  theme(plot.title = element_text(hjust = 0.5))  
+  theme(legend.position = "bottom", 
+        plot.title = element_text(hjust = 0.5)+
+          theme_classic())  
 dev.off()
+
+
+## ggradar  ::https://github.com/ricardo-bion/ggradar#ggradar
+
+mtcars_radar <- mtcars %>% 
+  as_tibble(rownames = "group") %>% 
+  mutate_at(vars(-group), rescale) %>% 
+  tail(4) %>% 
+  select(1:10)
+
+ggradar(mtcars_radar)
+
+
+
 

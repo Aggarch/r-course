@@ -1,6 +1,6 @@
 auto <- read.csv("../data/tema1/auto-mpg.csv", 
                  header = TRUE, sep = ",",
-                 strings.na = "",
+                 # strings.na = "",
                  stringsAsFactors = FALSE)
 names(auto)
 
