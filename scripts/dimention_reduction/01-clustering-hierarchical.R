@@ -1,3 +1,9 @@
+
+
+# Hierarchical Clustering  --------------------------------------------------------------------
+
+
+
 protein <- read.csv("../data/tema5/protein.csv")
 
 data <- as.data.frame(scale(protein[,-1]))

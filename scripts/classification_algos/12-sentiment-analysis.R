@@ -1,3 +1,6 @@
+
+# Sentiment Analisis en Twitter. 
+
 install.packages(c("twitteR", "RColorBrewer", "plyr",
                    "ggplot2", "devtools", "httr"))
 require(devtools)
@@ -9,6 +12,12 @@ install_url("https://cran.r-project.org/src/contrib/Archive/sentiment/sentiment_
 library(slam)
 library(sentiment)
 library(twitteR)
+
+# para obtener credenciales, realizar solicitud en twitter API webpage 
+# una alternativa adicional es usar el paquete rtweet en su version no_id
+# lo mas interesante de este script es la limpieza de texto con expresiones regulares 
+# el analisis de sentimiento con le paquete sentiment 
+# la visualizacion de los sentimientos, polaridad, emociones.
 
 api_key <- "Km07yXQyohsRRx6vr4DbKYF5C"
 api_secret <- "RDMCCXdwdmDZL0zI2Polj4KGG8Mc86B0IjfRNjfjShQJtmle6P"
