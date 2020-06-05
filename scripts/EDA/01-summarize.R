@@ -9,18 +9,19 @@ data$cylinders <- factor(data$cylinders,
 
 summary(data)
 
-str(data)
+str(data)sss
 
 
 summary(data$cylinders)
 summary(data$mpg)
 str(data$cylinders)
+ 
 
 
 install.packages(c("modeest", "raster", "moments"))
 library(modeest) #moda
 library(raster) #quantiles, cv
-library(moments) # asimetría, curtosis
+library(moments) # asimetría, curtosiss
 
 
 X = data$mpg
