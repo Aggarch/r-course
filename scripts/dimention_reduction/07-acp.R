@@ -1,3 +1,17 @@
+
+# Principa Components Analysis  ---------------------------------------------------------------
+
+
+
+# En general el analisis de componentes principales, es una tecnica de reduccion de la dimension
+# que transforma una entrada (m) - dimensional, un espacio de un numero (m) de dimensiones,
+# por un espacio (n) dimensional, donde (n) es un numero estrictamente menor que (m)
+# el objetivo es disminuir la cantidad de informacion o variabilidad, descartando (m -n)
+
+# El objetivo es quitar todo aquello que no aporta nada a nuestra informacion,
+# para tener un conjunto de datos mas reducido que el original.
+
+
 bh <- read.csv("../data/tema5/BostonHousing.csv")
 
 install.packages("corrplot")
